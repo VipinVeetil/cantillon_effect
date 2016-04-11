@@ -6,10 +6,33 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		FC0D49991CBC34C200FD0E30 /* economic_functions.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = economic_functions.py; sourceTree = "<group>"; };
+		FC0D499A1CBC34C200FD0E30 /* economy.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = economy.py; sourceTree = "<group>"; };
+		FC0D499B1CBC34C200FD0E30 /* firm.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = firm.py; sourceTree = "<group>"; };
+		FC0D499C1CBC34C200FD0E30 /* household.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = household.py; sourceTree = "<group>"; };
+		FC0D499D1CBC34C200FD0E30 /* parameters.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = parameters.py; sourceTree = "<group>"; };
+		FC0D499E1CBC34C200FD0E30 /* run.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = run.py; sourceTree = "<group>"; };
+		FC0D499F1CBC34C200FD0E30 /* start.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = start.py; sourceTree = "<group>"; };
+		FC0D49A01CBC34C200FD0E30 /* test.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = test.py; sourceTree = "<group>"; };
+		FC0D49A11CBC34C200FD0E30 /* time_step.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = time_step.py; sourceTree = "<group>"; };
+		FC0D49A21CBC34C200FD0E30 /* weights_opt.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = weights_opt.py; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		FC0D498E1CBC33D500FD0E30 = {
 			isa = PBXGroup;
 			children = (
+				FC0D49991CBC34C200FD0E30 /* economic_functions.py */,
+				FC0D499A1CBC34C200FD0E30 /* economy.py */,
+				FC0D499B1CBC34C200FD0E30 /* firm.py */,
+				FC0D499C1CBC34C200FD0E30 /* household.py */,
+				FC0D499D1CBC34C200FD0E30 /* parameters.py */,
+				FC0D499E1CBC34C200FD0E30 /* run.py */,
+				FC0D499F1CBC34C200FD0E30 /* start.py */,
+				FC0D49A01CBC34C200FD0E30 /* test.py */,
+				FC0D49A11CBC34C200FD0E30 /* time_step.py */,
+				FC0D49A21CBC34C200FD0E30 /* weights_opt.py */,
 			);
 			sourceTree = "<group>";
 		};
