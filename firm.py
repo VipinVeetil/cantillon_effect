@@ -19,8 +19,6 @@ import weights_opt
 
 class Firm(object):
 	def __init__(self):
-		self.weights_opt = weights_opt.WeightsOptimization()
-		""" module used to compute optimal proportions in which to buy inputs from neighbors """
 		self.ID = 0
 		""" each firm has a unique ID """
 		self.neighbors_IDs = []
@@ -73,15 +71,14 @@ class Firm(object):
 		""" price of good is nominal demand divided by real output """
 	
 	def compute_weights(self):
-		seed_weights = self.inputs_weights.values()[1:]
+		seed_weights = self.inputs_weights.values()
 		""" existing weights are used as seed weights to run optimization algorithm """
 		prices = self.inputs_prices.values()
-		weights = self.weights_opt.optimize(seed_weights, prices)
+		weights = weights_opt.optimize(seed_weights, prices)
 		self.inputs_weights[0] = weights[0]
-		non_labor_input_weights = weights[1]
-		count = 0
+		count = 1
 		for ID in self.neighbors_IDs:
-			self.inputs_weights[ID] = non_labor_input_weights[count]
+			self.inputs_weights[ID] = weights[count]
 			count += 1
 
 	def allocate_output_to_demanders(self):
