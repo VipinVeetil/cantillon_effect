@@ -52,7 +52,7 @@ class Firm(object):
 	
 	def produce(self):
 		""" produce output """
-		non_labor_inputs = self.inputs.values().pop(0)
+		non_labor_inputs = self.inputs.values()[1:]
 		""" create list of quantities of non_labor_inputs """
 		CES_output = ef.CES(non_labor_inputs, self.CES_exponent)
 		""" compute CES portion of output produced using non-labor inputs """
