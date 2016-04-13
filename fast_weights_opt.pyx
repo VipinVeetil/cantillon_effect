@@ -21,6 +21,7 @@ import parameters
 cimport numpy as np
 import numpy as np
 from scipy.optimize import minimize
+#from sys import float_epsilon
 
 cdef double F(weights, double labor_price, non_labor_prices, double cobb_douglas_exponent_labor, double cobb_douglas_exponent_non_labor, double CES_exponent):
 	cdef double value
@@ -42,6 +43,9 @@ def optimize(seed_weights, prices):
 	cdef np.ndarray non_labor_weights
 	cdef double labor_weight
 
+
+	#print 'seed weights', sum(seed_weights), seed_weights
+
 	cons = ({'type': 'eq', 'fun': lambda x: 1 - x.sum()})
 
 	bnds = []
@@ -50,12 +54,36 @@ def optimize(seed_weights, prices):
 
 	labor_price = prices[0]
 	non_labor_prices = prices[1:]
-	opt = minimize(F,np.array(seed_weights), args=(np.array(labor_price), np.array(non_labor_prices),cobb_douglas_exponent_labor, cobb_douglas_exponent_non_labor, CES_exponent), method =  'SLSQP', bounds = bnds, constraints = cons)
+	opt = minimize(F,np.array(seed_weights), args=(np.array(labor_price), np.array(non_labor_prices),cobb_douglas_exponent_labor, cobb_douglas_exponent_non_labor, CES_exponent), method =  'SLSQP', bounds = bnds, constraints = cons, options = {'maxiter':1000000000})
+
+
+	assert opt.success, opt
+	assert  0.999 < opt.x.sum() < 1.001, (opt.x.sum(), opt.x)
+
 
 	optimal_weights = opt.x
 	for weight in optimal_weights:
 		assert weight >= 0.000, weight
+
+
+	#optimal_weights = optimal_weights / (sum(optimal_weights) + float_epsilon)
+	optimal_weights = optimal_weights / sum(optimal_weights)
+
+	#assert sum(optimal_weights) == 1.0, (optimal_weights, sum(optimal_weights))
+
+
+
 	return optimal_weights
+
+
+
+
+
+
+
+
+
+
 
 
 

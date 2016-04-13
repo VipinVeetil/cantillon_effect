@@ -51,29 +51,44 @@ print "hours", (time() - t)/3600, "number of firms", parameters.number_of_firms
 
 
 
-"""
 
-plt.plot(start_instance.run.economy.household.wealth)
-plt.title('Household Wealth')
-plt.show()
+
 
 plt.plot(start_instance.run.wealth)
 plt.title('Firms Wealth')
 plt.show()
 
-plt.plot(start_instance.run.wealth_cv)
-plt.title('Firms Wealth CV')
+plt.plot(start_instance.run.wealth[800:])
+plt.title('Last Rounds Firms Wealth')
 plt.show()
+
 
 plt.plot(start_instance.run.prices_mean)
 plt.title('Mean Price')
+plt.show()
+
+plt.plot(start_instance.run.prices_mean[800:])
+plt.title('Last Rounds Mean Price')
+plt.show()
+
+
+
+
+"""
+plt.plot(start_instance.run.economy.household.wealth)
+plt.title('Household Wealth')
+plt.show()
+
+
+plt.plot(start_instance.run.wealth_cv)
+plt.title('Firms Wealth CV')
 plt.show()
 
 
 plt.plot(start_instance.run.prices_cv)
 plt.title('CV price')
 plt.show()
-
 """
+
 
 

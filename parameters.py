@@ -19,13 +19,9 @@ import numpy as np
 
 
 number_of_firms = 50
-time_steps = 50
+time_steps = 1000
 labor = 1000
 barabasi_albert_graph_parameter = 2
-
-#weights_optimization_method = 'Nelder-Mead'
-#weights_optimization_method = 'BFGS'
-weights_optimization_method = 'TNC'
 
 
 CES_exponent = 0.8

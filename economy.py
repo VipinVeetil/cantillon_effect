@@ -112,7 +112,8 @@ class Economy(object):
 				neighbors_IDs.append(supplier.ID)
 			firm.inputs_weights = inputs_weights
 			firm.neighbors_IDs = neighbors_IDs
-			firm.seed_weights = inputs_weights.values()[1:]
+			#firm.seed_weights = inputs_weights.values()[1:]
+			firm.seed_weights = inputs_weights.values()
 		""" assign the firm input weights """
 
 	def assign_initial_inputs(self):
