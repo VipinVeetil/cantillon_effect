@@ -14,7 +14,7 @@
 """
 
 from __future__ import division
-import economic_functions as ef
+import fast_economic_functions as ef
 
 class Household(object):
 	

@@ -17,6 +17,10 @@
 		FC0D49A01CBC34C200FD0E30 /* test.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = test.py; sourceTree = "<group>"; };
 		FC0D49A11CBC34C200FD0E30 /* time_step.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = time_step.py; sourceTree = "<group>"; };
 		FC0D49A21CBC34C200FD0E30 /* weights_opt.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = weights_opt.py; sourceTree = "<group>"; };
+		FCD741101CBDE5150040EC43 /* compile.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = compile.py; sourceTree = "<group>"; };
+		FCD741111CBDE5150040EC43 /* compile.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = compile.sh; sourceTree = "<group>"; };
+		FCD741121CBDE5260040EC43 /* fast_economic_functions.pyx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fast_economic_functions.pyx; sourceTree = "<group>"; };
+		FCD741131CBDE5260040EC43 /* fast_weights_opt.pyx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fast_weights_opt.pyx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -33,6 +37,10 @@
 				FC0D49A01CBC34C200FD0E30 /* test.py */,
 				FC0D49A11CBC34C200FD0E30 /* time_step.py */,
 				FC0D49A21CBC34C200FD0E30 /* weights_opt.py */,
+				FCD741101CBDE5150040EC43 /* compile.py */,
+				FCD741111CBDE5150040EC43 /* compile.sh */,
+				FCD741121CBDE5260040EC43 /* fast_economic_functions.pyx */,
+				FCD741131CBDE5260040EC43 /* fast_weights_opt.pyx */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +208,7 @@
 				FC0D49981CBC33D500FD0E30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

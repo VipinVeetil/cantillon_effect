@@ -12,12 +12,19 @@
 	Module description: starts a single run of simulation
 	
 """
+
 from __future__ import division
 import run
 import random
 import matplotlib.pyplot as plt
 from operator import add
 import parameters
+from time import time
+import parameters
+
+random.seed(100)
+
+t = time()
 
 class Start(object):
 
@@ -38,8 +45,13 @@ start_instance.create_economy()
 """ create economy """
 start_instance.forward_in_time()
 """ run it forward in time """
+print "seconds", (time() - t), "number of firms", parameters.number_of_firms
+print "minutes", (time() - t)/60, "number of firms", parameters.number_of_firms
+print "hours", (time() - t)/3600, "number of firms", parameters.number_of_firms
 
 
+
+"""
 
 plt.plot(start_instance.run.economy.household.wealth)
 plt.title('Household Wealth')
@@ -61,5 +73,7 @@ plt.show()
 plt.plot(start_instance.run.prices_cv)
 plt.title('CV price')
 plt.show()
+
+"""
 
 

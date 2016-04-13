@@ -19,7 +19,7 @@ import firm
 import household
 import networkx as nx
 import random
-import economic_functions as ef
+import fast_economic_functions as ef
 
 class Economy(object):
 	def __init__(self):
@@ -112,6 +112,7 @@ class Economy(object):
 				neighbors_IDs.append(supplier.ID)
 			firm.inputs_weights = inputs_weights
 			firm.neighbors_IDs = neighbors_IDs
+			firm.seed_weights = inputs_weights.values()[1:]
 		""" assign the firm input weights """
 
 	def assign_initial_inputs(self):
