@@ -3,7 +3,6 @@
 	Cheers to science :-)
 	I'd be happy to hear from you about how to improve this code.
 	
-	Author: Vipin P. Veetil
 	Contact: vipin.veetil@gmail.com
 	
 	Code language: Python
@@ -16,6 +15,7 @@
 from __future__ import division
 import economic_functions as ef
 import weights_opt
+from collections import OrderedDict
 
 class Firm(object):
 	def __init__(self):
@@ -28,13 +28,13 @@ class Firm(object):
 		""" the CES exponent associated with each firm that supplies input """
 		self.wealth = 0
 		""" nominal wealth of firm over time """
-		self.inputs_demand = {}
+		self.inputs_demand = OrderedDict({})
 		""" nominal demand for inputs of different suppliers; index zero is demand for labor input """
-		self.inputs = {}
+		self.inputs = OrderedDict({})
 		""" quantity of inputs provided by different suppliers; index zero is quantity of labor input """
-		self.inputs_weights = {}
+		self.inputs_weights = OrderedDict({})
 		""" proportion of wealth spend on different inputs """
-		self.inputs_prices = {}
+		self.inputs_prices = OrderedDict({})
 		""" prices of different inputs; index zero is wage """
 		self.output = 0
 		""" output produced by firm over time """
@@ -42,9 +42,9 @@ class Firm(object):
 		""" price charged by firm over time """
 		self.demand = 0
 		""" total demand for output in current period """
-		self.output_demands = {}
+		self.output_demands = OrderedDict({})
 		""" demands from different buyers in current period """
-		self.output_allocation = {}
+		self.output_allocation = OrderedDict({})
 		""" allocation of output to different buyers in current period """
 		self.number_of_buyers = 0
 	
@@ -75,8 +75,7 @@ class Firm(object):
 		""" existing weights are used as seed weights to run optimization algorithm """
 		prices = self.inputs_prices.values()
 		weights = weights_opt.optimize(seed_weights, prices)
-		self.inputs_weights[0] = weights[0]
-		count = 1
+		count = 0
 		for ID in self.neighbors_IDs:
 			self.inputs_weights[ID] = weights[count]
 			count += 1

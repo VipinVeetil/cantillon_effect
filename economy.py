@@ -104,7 +104,7 @@ class Economy(object):
 			inputs_weights = OrderedDict({0:weights[0]})
 			""" the input weight 0th position is labor weight because household is represented by 0 """
 			count = 1
-			neighbors_IDs = []
+			neighbors_IDs = [0]
 			for supplier in suppliers:
 				inputs_weights.update({supplier.ID: weights[count]})
 				""" assign an input weight for each of the suppliers """

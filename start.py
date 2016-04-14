@@ -46,7 +46,7 @@ print "hours", (time() - t)/3600, "number of firms", parameters.number_of_firms,
 
 
 
-"""
+
 plt.plot(start_instance.run.economy.household.wealth)
 plt.title('Household Wealth')
 plt.show()
@@ -67,6 +67,6 @@ plt.show()
 plt.plot(start_instance.run.prices_cv)
 plt.title('CV price')
 plt.show()
-"""
+
 
 
