@@ -3,7 +3,6 @@
 	Cheers to science :-)
 	I'd be happy to hear from you about how to improve this code.
 	
-	Author: Vipin P. Veetil
 	Contact: vipin.veetil@gmail.com
 	
 	Code language: Python
@@ -14,7 +13,7 @@
 """
 from __future__ import division
 import random
-from numba import jit
+from collections import OrderedDict
 
 class TimeStep(object):
 	def __init__(self):
@@ -50,7 +49,7 @@ class TimeStep(object):
 	def transfer_price_information(self):
 		""" each firm recieves information about the price of its inputs """
 		for firm in self.economy.firms_list:
-			prices_dictionary = {}
+			prices_dictionary = OrderedDict({})
 			prices_dictionary.update({0:self.economy.household.wage[-1]})
 			suppliers = self.economy.firms_network.neighbors(firm)
 			for supplier in suppliers:
@@ -59,7 +58,7 @@ class TimeStep(object):
 
 	def transfer_demand_information(self):
 		""" transfer information about demands for their outputs to firms and households """
-		labor_demands = {}
+		labor_demands = OrderedDict({})
 		""" a dictionary to record labor demanded by different firms """
 		for firm in self.economy.firms_list:
 			labor_demands.update({firm.ID: firm.inputs_demand[0]})

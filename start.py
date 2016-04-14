@@ -3,7 +3,6 @@
 	Cheers to science :-)
 	I'd be happy to hear from you about how to improve this code.
 	
-	Author: Vipin P. Veetil
 	Contact: vipin.veetil@gmail.com
 	
 	Code language: Python
@@ -18,7 +17,9 @@ import random
 import matplotlib.pyplot as plt
 from operator import add
 import parameters
+from time import time
 
+t = time()
 class Start(object):
 
 	def __init__(self):
@@ -39,8 +40,13 @@ start_instance.create_economy()
 start_instance.forward_in_time()
 """ run it forward in time """
 
+print "seconds", (time() - t), "number of firms", parameters.number_of_firms, 'firms', parameters.time_steps, 'time steps'
+print "minutes", (time() - t)/60, "number of firms", parameters.number_of_firms, 'firms', parameters.time_steps, 'time steps'
+print "hours", (time() - t)/3600, "number of firms", parameters.number_of_firms, 'firms', parameters.time_steps, 'time steps'
 
 
+
+"""
 plt.plot(start_instance.run.economy.household.wealth)
 plt.title('Household Wealth')
 plt.show()
@@ -61,5 +67,6 @@ plt.show()
 plt.plot(start_instance.run.prices_cv)
 plt.title('CV price')
 plt.show()
+"""
 
 

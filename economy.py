@@ -3,7 +3,6 @@
 	Cheers to science :-)
 	I'd be happy to hear from you about how to improve this code.
 	
-	Author: Vipin P. Veetil
 	Contact: vipin.veetil@gmail.com
 	
 	Code language: Python
@@ -20,6 +19,7 @@ import household
 import networkx as nx
 import random
 import economic_functions as ef
+from collections import OrderedDict
 
 class Economy(object):
 	def __init__(self):
@@ -101,7 +101,7 @@ class Economy(object):
 			""" generate a list of normalize random numbers of lenght one more than number of supplier firms, because labor is an input for all firms """
 			weights = ef.normalized_random_numbers(how_many_random_numbers)
 			""" the weights are normalized random numbers """
-			inputs_weights = {0:weights[0]}
+			inputs_weights = OrderedDict({0:weights[0]})
 			""" the input weight 0th position is labor weight because household is represented by 0 """
 			count = 1
 			neighbors_IDs = []

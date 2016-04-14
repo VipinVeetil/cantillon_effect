@@ -15,6 +15,7 @@
 
 from __future__ import division
 import economic_functions as ef
+from collections import OrderedDict
 
 class Household(object):
 	
@@ -27,21 +28,21 @@ class Household(object):
 		""" sum of nominal labor demand by all firms """
 		self.labor_demand = {}
 		self.utility = []
-		self.utility_function_parameters = {}
+		self.utility_function_parameters = OrderedDict({})
 		"""
 			the keys of the dictionary are the firm IDs
 			the values are the exponents associated with each firms' output in the a Cobb-Douglas utility functions
 			
 		"""
-		self.goods = {}
+		self.goods = OrderedDict({})
 		"""
 			the keys of the dictionary are the firm IDs
 			the values are the quantity of goods bought from each associated firm
 			
 		"""
-		self.goods_demand = {}
+		self.goods_demand = OrderedDict({})
 		""" the households nominal demand for the different consumption goods """
-		self.labor_allocation = {}
+		self.labor_allocation = OrderedDict({})
 		""" quantity of labor allocated to different firms """
 	
 	def compute_wage(self):
