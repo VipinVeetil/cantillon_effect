@@ -57,9 +57,8 @@ class Firm(object):
 		labor_quantity = self.inputs[0]
 		""" quantity of labor is saved as index 0 """
 		cobb_douglas_quantities = [labor_quantity, CES_output]
-		
-		""" compute total output by combining labor and CES_output in a Cobb-Douglas production functions """
 		output = ef.cobb_douglas(cobb_douglas_quantities, self.cobb_douglas_exponents)
+		""" compute total output by combining labor and CES_output in a Cobb-Douglas production functions """
 		self.output = output
 		""" record output  """
 	
@@ -71,13 +70,16 @@ class Firm(object):
 		""" price of good is nominal demand divided by real output """
 	
 	def compute_weights(self):
-		seed_weights = self.inputs_weights.values()
+		#seed_weights = self.inputs_weights.values()
 		""" existing weights are used as seed weights to run optimization algorithm """
 		prices = self.inputs_prices.values()
-		weights = weights_opt.optimize(seed_weights, prices)
+		print 'input prices', self.inputs_prices
+		optimal_weights = weights_opt.optimize(self.seed_weights, prices)
+		self.seed_weights = optimal_weights
+		print 'optimal weights', optimal_weights
 		count = 0
 		for ID in self.neighbors_IDs:
-			self.inputs_weights[ID] = weights[count]
+			self.inputs_weights[ID] = optimal_weights[count]
 			count += 1
 
 	def allocate_output_to_demanders(self):
