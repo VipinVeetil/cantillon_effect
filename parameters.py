@@ -17,7 +17,7 @@ from __future__ import division
 
 
 number_of_firms = 10
-time_steps = 1000
+time_steps = 10
 CES_exponent = 0.8
 cobb_douglas_exponents = [0.3, 0.7]
 cobb_douglas_exponent_labor = 0.3

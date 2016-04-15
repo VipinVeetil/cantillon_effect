@@ -74,10 +74,10 @@ class Firm(object):
 		""" existing weights are used as seed weights to run optimization algorithm """
 		prices = self.inputs_prices.values()
 		print self.ID, 'ID'
-		print 'input prices', self.inputs_prices.values()
+		#print 'input prices', self.inputs_prices.values()
 		optimal_weights = weights_opt.optimize(self.seed_weights, prices)
 		self.seed_weights = optimal_weights
-		print 'optimal weights', optimal_weights
+		#print 'optimal weights', optimal_weights
 		count = 0
 		for ID in self.neighbors_IDs:
 			self.inputs_weights[ID] = optimal_weights[count]
