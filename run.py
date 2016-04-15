@@ -25,7 +25,7 @@ class Run(object):
 		self.economy = economy.Economy()
 		self.time_step = ts.TimeStep()
 		self.number_time_steps = parameters.time_steps
-		self.wealth = []
+		self.GDP = []
 		self.wealth_cv = []
 		""" the coefficient of variation of wealth among firms """
 		self.prices_mean = []
@@ -54,7 +54,11 @@ class Run(object):
 		for firm in self.economy.firms_list:
 			wealth.append(firm.wealth)
 			prices.append(firm.price)
-		self.wealth.append(sum(wealth))
+		
+		#wealth.append(self.economy.household.wealth[-1])
+		#	print self.economy.household.wealth
+		
+		self.GDP.append(sum(wealth))
 		self.wealth_cv.append(stats.variation(wealth))
 		self.prices_mean.append(np.mean(prices))
 		self.prices_cv.append(stats.variation(prices))

@@ -50,7 +50,8 @@ class Economy(object):
 		ID = 1
 		""" firm IDs begin from 1 because the household has ID 0 """
 		for firm in self.firms_list:
-			firm.wealth = random.uniform(0,1)
+			#firm.wealth = random.uniform(0,1)
+			firm.wealth = 1
 			""" assign random initial wealth to each firm """
 			firm.price = random.uniform(0,1)
 			""" assign random initial price to each firm """
@@ -66,7 +67,8 @@ class Economy(object):
 	def create_household(self):
 		self.household = household.Household()
 		""" instantiate a representative household """
-		self.household.wealth.append(random.uniform(0,1))
+		#self.household.wealth.append(random.uniform(0,1))
+		self.household.wealth.append(1)
 		""" assign random initial wealth to household """
 		self.household.wage.append(random.uniform(0,1))
 		""" assign random initial wage to household """

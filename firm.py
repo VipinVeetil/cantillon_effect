@@ -101,11 +101,8 @@ class Firm(object):
 	
 	def demand_inputs(self):
 		""" compute the demand for inputs from different suppliers """
-		for ID in self.inputs_weights:
+		for ID in self.neighbors_IDs:
 			demand = self.inputs_weights[ID] * self.wealth
 			""" demand equals the weight associated with an agent multipled by current nominal wealth """
 			self.inputs_demand.update({ID: demand})
-
-
-
 			

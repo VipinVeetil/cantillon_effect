@@ -18,6 +18,7 @@ import matplotlib.pyplot as plt
 from operator import add
 import parameters
 from time import time
+import numpy as np
 
 t = time()
 class Start(object):
@@ -47,20 +48,39 @@ print (time() - t)/3600, "hours", parameters.number_of_firms, "firms", parameter
 
 
 
-plt.plot(start_instance.run.economy.household.wealth)
-plt.title('Household Wealth')
-plt.show()
 
-plt.plot(start_instance.run.wealth)
-plt.title('Firms Wealth')
-plt.show()
-
-plt.plot(start_instance.run.wealth_cv)
-plt.title('Firms Wealth CV')
+plt.plot(start_instance.run.GDP)
+plt.title('Nominal GDP')
 plt.show()
 
 plt.plot(start_instance.run.prices_mean)
 plt.title('Mean Price')
+plt.show()
+
+real_GDP = []
+for i in xrange(len(start_instance.run.GDP)):
+	real = start_instance.run.GDP[i] / start_instance.run.prices_mean[i]
+	real_GDP.append(real)
+
+
+plt.plot(real_GDP)
+plt.title('Real GDP')
+plt.show()
+
+
+plt.plot(real_GDP[30: ])
+plt.title('Last Real GDP')
+plt.show()
+
+
+
+
+
+
+
+"""
+plt.plot(start_instance.run.wealth_cv)
+plt.title('Firms Wealth CV')
 plt.show()
 
 
@@ -69,4 +89,16 @@ plt.title('CV price')
 plt.show()
 
 
+
+plt.plot(start_instance.run.economy.household.wealth)
+plt.title('Household Wealth')
+plt.show()
+
+
+real_GDP = np.array(start_instance.run.GDP) / (parameters.number_of_firms + 1)
+plt.plot(real_GDP)
+plt.title('Real GDP')
+plt.show()
+
+"""
 
