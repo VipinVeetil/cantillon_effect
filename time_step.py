@@ -63,11 +63,11 @@ class TimeStep(object):
 		for firm in self.economy.firms_list:
 			labor_demands.update({firm.ID: firm.inputs_demand[0]})
 			""" update labor demand with the quantity of labor demanded by the firm """
-			demands_dictionary = {}
+			demands_dictionary = OrderedDict({})
 			demands_dictionary.update({0: self.economy.household.goods_demand[firm.ID]})
 			""" a dictionary to record demand for a firms output """
 			demanders = self.economy.firms_network.neighbors(firm)
-			""" the predecessors of a firm demand its output """
+			""" the neighbors of a firm demand its output """
 			for demander in demanders:
 				demands_dictionary.update({demander.ID: demander.inputs_demand[firm.ID]})
 			firm.update_own_demand(demands_dictionary)
@@ -90,7 +90,7 @@ class TimeStep(object):
 			firm.inputs.update({0:labor})
 			""" firm updates labor available to it """
 			suppliers = self.economy.firms_network.neighbors(firm)
-			""" successors of a firm are its suppliers because direction indicates flow of money, goods flow in the opposite direction """
+			""" neighbors of a firm are its suppliers """
 			for supplier in suppliers:
 				input = supplier.output_allocation[firm.ID]
 				firm.inputs.update({supplier.ID:input})

@@ -71,6 +71,8 @@ class Run(object):
 			""" compute demand for others goods """
 			self.time_step.transfer_demand_information()
 			""" pass demand information """
+			self.time_step.update_wealth()
+			""" update wealth """
 			self.time_step.firms_compute_prices()
 			""" use demand information to compute prices """
 			self.time_step.household_compute_wage()
@@ -83,8 +85,6 @@ class Run(object):
 			""" transfer inputs to each other """
 			self.time_step.transfer_consumption_good()
 			""" retail firms transfer consumption good to household """
-			self.time_step.update_wealth()
-			""" update wealth """
 			self.time_step.compute_welfare()
 			""" compute household welfare """
 			self.time_step.firms_compute_weights()

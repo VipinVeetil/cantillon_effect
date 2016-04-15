@@ -64,8 +64,6 @@ class Firm(object):
 	
 	def compute_price(self):
 		""" compute price of output """
-		self.demand = sum(self.output_demands.values())
-		""" sum the demands from different buyers """
 		self.price = self.demand / self.output
 		""" price of good is nominal demand divided by real output """
 	
@@ -82,18 +80,19 @@ class Firm(object):
 	def allocate_output_to_demanders(self):
 		""" allocate the output to different demanders """
 		""" the firm does not transfer output to other firms, but records how much to transfer to each buyer in a list """
-		for firm_ID in self.output_demands:
-			allocation = self.output_demands[firm_ID] / self.price
+		for ID in self.output_demands:
+			allocation = self.output_demands[ID] / self.price
 			""" the quantity of good allocated to each buyer is equal to the demand of the buyer divided by price of the good """
-			self.output_allocation.update({firm_ID:allocation})
+			self.output_allocation.update({ID:allocation})
 			""" record the allocation """
 
-	def update_own_demand(self, demand):
+	def update_own_demand(self, output_demands):
 		""" update the demand for the good produced by the firm; functions takes a dictionary of demands as an argument  """
-		self.output_demands = demand
+		self.output_demands = output_demands
+		self.demand = sum(self.output_demands.values())
 
 	def update_wealth(self):
-		""" current demand is firms current wealth """
+		""" sum the demands from different buyers """
 		self.wealth = self.demand
 
 	def update_inputs(self, inputs):
@@ -102,10 +101,10 @@ class Firm(object):
 	
 	def demand_inputs(self):
 		""" compute the demand for inputs from different suppliers """
-		for agent_ID in self.inputs_weights:
-			demand = self.inputs_weights[agent_ID] * self.wealth
+		for ID in self.inputs_weights:
+			demand = self.inputs_weights[ID] * self.wealth
 			""" demand equals the weight associated with an agent multipled by current nominal wealth """
-			self.inputs_demand.update({agent_ID: demand})
+			self.inputs_demand.update({ID: demand})
 
 
 

@@ -16,12 +16,12 @@
 from __future__ import division
 
 
-number_of_firms = 10
-time_steps = 10
+number_of_firms = 1000
+time_steps = 100
 CES_exponent = 0.8
 cobb_douglas_exponents = [0.3, 0.7]
 cobb_douglas_exponent_labor = 0.3
 cobb_douglas_exponent_non_labor = 0.7
 labor = 1000
-barabasi_albert_graph_parameter = 2
+barabasi_albert_graph_parameter = 1
 percent_firms_change_weights = 1
