@@ -21,7 +21,6 @@ import parameters
 import numpy as np
 from scipy.optimize import minimize
 
-
 def F(weights,prices):
 	non_labor_inputs = weights[1:] / prices[1:]
 	CES_output = ef.CES(non_labor_inputs, parameters.CES_exponent)
@@ -36,7 +35,7 @@ def optimize(seed_weights, prices):
 	for i in xrange(len(seed_weights)):
 		bnds.append((0,1))
 	opt =  minimize(F, np.array(seed_weights), args=(np.array(prices)), method = 'SLSQP', bounds = bnds, constraints = cons, options = {'maxiter': 100000000})
-	
+
 	assert opt.success, opt
 	
 	optimal_weights = opt.x

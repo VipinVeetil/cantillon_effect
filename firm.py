@@ -70,20 +70,18 @@ class Firm(object):
 		""" price of good is nominal demand divided by real output """
 	
 	def compute_weights(self):
-		#seed_weights = self.inputs_weights.values()
 		""" existing weights are used as seed weights to run optimization algorithm """
 		prices = self.inputs_prices.values()
-		print self.ID, 'ID'
-		#print 'input prices', self.inputs_prices.values()
 		optimal_weights = weights_opt.optimize(self.seed_weights, prices)
 		self.seed_weights = optimal_weights
-		#self.seed_weights = ef.normalized_random_numbers(len(prices))
-		#print 'optimal weights', optimal_weights
 		count = 0
 		for ID in self.neighbors_IDs:
 			self.inputs_weights[ID] = optimal_weights[count]
 			count += 1
 
+		""" the following code checks if the rank of weights corresponds to inverse order of prices """
+		
+		"""
 		non_labor_prices = prices[1:]
 		prices_sorted = sorted(non_labor_prices)
 		prices_index = []
@@ -100,10 +98,7 @@ class Firm(object):
 		
 		print prices_index, 'prices index'
 		print optimal_weights_index, 'optimal weights index'
-	
-
-
-
+		"""
 
 	def allocate_output_to_demanders(self):
 		""" allocate the output to different demanders """
