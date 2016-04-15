@@ -79,27 +79,6 @@ class Firm(object):
 			self.inputs_weights[ID] = optimal_weights[count]
 			count += 1
 
-		""" the following code checks if the rank of weights corresponds to inverse order of prices """
-		
-		"""
-		non_labor_prices = prices[1:]
-		prices_sorted = sorted(non_labor_prices)
-		prices_index = []
-		
-		for i in non_labor_prices:
-			prices_index.append(prices_sorted.index(i))
-
-		non_labor_weights = optimal_weights[1:]
-		optimal_weights_sorted = sorted(non_labor_weights, reverse = True)
-		optimal_weights_index = []
-		
-		for i in non_labor_weights:
-			optimal_weights_index.append(optimal_weights_sorted.index(i))
-		
-		print prices_index, 'prices index'
-		print optimal_weights_index, 'optimal weights index'
-		"""
-
 	def allocate_output_to_demanders(self):
 		""" allocate the output to different demanders """
 		""" the firm does not transfer output to other firms, but records how much to transfer to each buyer in a list """
