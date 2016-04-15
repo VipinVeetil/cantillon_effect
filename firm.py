@@ -77,11 +77,33 @@ class Firm(object):
 		#print 'input prices', self.inputs_prices.values()
 		optimal_weights = weights_opt.optimize(self.seed_weights, prices)
 		self.seed_weights = optimal_weights
+		#self.seed_weights = ef.normalized_random_numbers(len(prices))
 		#print 'optimal weights', optimal_weights
 		count = 0
 		for ID in self.neighbors_IDs:
 			self.inputs_weights[ID] = optimal_weights[count]
 			count += 1
+
+		non_labor_prices = prices[1:]
+		prices_sorted = sorted(non_labor_prices)
+		prices_index = []
+		
+		for i in non_labor_prices:
+			prices_index.append(prices_sorted.index(i))
+
+		non_labor_weights = optimal_weights[1:]
+		optimal_weights_sorted = sorted(non_labor_weights, reverse = True)
+		optimal_weights_index = []
+		
+		for i in non_labor_weights:
+			optimal_weights_index.append(optimal_weights_sorted.index(i))
+		
+		print prices_index, 'prices index'
+		print optimal_weights_index, 'optimal weights index'
+	
+
+
+
 
 	def allocate_output_to_demanders(self):
 		""" allocate the output to different demanders """
