@@ -45,8 +45,6 @@ print (time() - t), "seconds", parameters.number_of_firms, "firms", parameters.t
 print (time() - t)/60, "minutes", parameters.number_of_firms, "firms", parameters.time_steps, "time steps"
 print (time() - t)/3600, "hours", parameters.number_of_firms, "firms", parameters.time_steps, "time steps"
 
-"""
-
 
 
 plt.plot(start_instance.run.prices_mean)
@@ -171,7 +169,7 @@ plt.plot(start_instance.run.wealth_cv)
 plt.title('Firms Wealth CV')
 plt.show()
 
-"""
+
 
 
 
