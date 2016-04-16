@@ -48,6 +48,24 @@ class Simulation(object):
 				writer = csv.writer(monetary_shocks, delimiter=',')
 				writer.writerow([percent_shock] + [mean_CV] + [max_CV])
 
+
+	def simulations_price_changes(self):
+		self.assign_parameter_values()
+		self.create_economy()
+		self.forward_in_time()
+		time_differences = [1,2,3,4,5,10,20,50]
+		with open('price_changes.csv', 'wb') as price_changes:
+			for time in time_differences:
+				histogram_data = []
+				print time, 'time difference'
+				for firm in self.run.economy.firms_list:
+					percent_price_change = (firm.price_series[499 + time] - firm.price_series[499]) / firm.price_series[499]
+					histogram_data.append(percent_price_change)
+				writer = csv.writer(price_changes, delimiter=',')
+				writer.writerow([time] + histogram_data)
+
+
 simulation_instance = Simulation()
 simulation_instance.simulations()
+simulation_instance.simulations_price_changes()
 
