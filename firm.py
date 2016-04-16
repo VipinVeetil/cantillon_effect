@@ -39,6 +39,7 @@ class Firm(object):
 		self.output = 0
 		""" output produced by firm over time """
 		self.price = 0
+		self.price_series = []
 		""" price charged by firm over time """
 		self.demand = 0
 		""" total demand for output in current period """
@@ -66,6 +67,7 @@ class Firm(object):
 		""" compute price of output """
 		self.price = self.demand / self.output
 		""" price of good is nominal demand divided by real output """
+		self.price_series.append(self.price)
 	
 	def compute_weights(self):
 		""" existing weights are used as seed weights to run optimization algorithm """

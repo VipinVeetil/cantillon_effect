@@ -73,6 +73,88 @@ plt.title('Welfare')
 plt.show()
 
 
+
+hist = []
+for firm in start_instance.run.economy.firms_list:
+	diff = (firm.price_series[500] - firm.price_series[499]) / firm.price_series[499]
+	hist.append(diff)
+
+plt.hist(hist, 100, normed=1)
+plt.title('0 Price Changes')
+plt.show()
+
+
+
+hist = []
+for firm in start_instance.run.economy.firms_list:
+	diff = (firm.price_series[501] - firm.price_series[499]) / firm.price_series[499]
+	hist.append(diff)
+
+plt.hist(hist, 100, normed=1)
+plt.title('1 Price Changes')
+plt.show()
+
+
+hist = []
+for firm in start_instance.run.economy.firms_list:
+	diff = (firm.price_series[502] - firm.price_series[499]) / firm.price_series[499]
+	hist.append(diff)
+
+plt.hist(hist, 100, normed=1)
+plt.title('2 Price Changes')
+plt.show()
+
+hist = []
+for firm in start_instance.run.economy.firms_list:
+	diff = (firm.price_series[503] - firm.price_series[499]) / firm.price_series[499]
+	hist.append(diff)
+
+plt.hist(hist, 100, normed=1)
+plt.title('3 Price Changes')
+plt.show()
+
+
+hist = []
+for firm in start_instance.run.economy.firms_list:
+	diff = (firm.price_series[505] - firm.price_series[499]) / firm.price_series[499]
+	hist.append(diff)
+
+plt.hist(hist, 100, normed=1)
+plt.title('5 Price Changes')
+plt.show()
+
+hist = []
+for firm in start_instance.run.economy.firms_list:
+	diff = (firm.price_series[510] - firm.price_series[499]) / firm.price_series[499]
+	hist.append(diff)
+
+plt.hist(hist, 100, normed=1)
+plt.title('10 Price Changes')
+plt.show()
+
+
+
+hist = []
+for firm in start_instance.run.economy.firms_list:
+	diff = (firm.price_series[600] - firm.price_series[499]) / firm.price_series[499]
+	hist.append(diff)
+
+plt.hist(hist, 100, normed=1)
+plt.title('100 Price Changes')
+plt.show()
+
+
+
+
+hist = []
+for firm in start_instance.run.economy.firms_list:
+	diff = (firm.price_series[700] - firm.price_series[499]) / firm.price_series[499]
+	hist.append(diff)
+
+plt.hist(hist, 100, normed=1)
+plt.title('200 Price Changes')
+plt.show()
+
 """
 
 plt.plot(start_instance.run.economy.household.wealth)

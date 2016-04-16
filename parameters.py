@@ -31,6 +31,6 @@ weights_endogeneous = True
 money_stock = number_of_firms + 1
 monetary_shock_time_step = int(time_steps/2)
 monetary_shock_type = 'positive'
-monetary_shock_percent = 0.25
+monetary_shock_percent = 0.05
 proportion_firms_monetary_injection = 0.01
 number_firms_monetary_injection = int(proportion_firms_monetary_injection * number_of_firms)
