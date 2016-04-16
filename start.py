@@ -58,10 +58,26 @@ plt.title('Output')
 plt.show()
 
 
-plt.plot(start_instance.run.output[30:])
+plt.plot(start_instance.run.output[400:])
 plt.title('Last Output')
 plt.show()
 
+
+plt.plot(start_instance.run.prices_cv[400:])
+plt.title('CV price')
+plt.show()
+
+
+plt.plot(start_instance.run.economy.household.utility[400:])
+plt.title('Welfare')
+plt.show()
+
+
+"""
+
+plt.plot(start_instance.run.economy.household.wealth)
+plt.title('Household Wealth')
+plt.show()
 
 
 plt.plot(start_instance.run.GDP)
@@ -69,21 +85,13 @@ plt.title('Nominal GDP')
 plt.show()
 
 
-
-
 plt.plot(start_instance.run.wealth_cv)
 plt.title('Firms Wealth CV')
 plt.show()
 
-
-plt.plot(start_instance.run.prices_cv)
-plt.title('CV price')
-plt.show()
+"""
 
 
 
-plt.plot(start_instance.run.economy.household.wealth)
-plt.title('Household Wealth')
-plt.show()
 
 

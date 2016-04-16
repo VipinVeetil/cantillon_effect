@@ -19,6 +19,7 @@ import time_step as ts
 import parameters
 import scipy.stats as stats
 import numpy as np
+import random
 
 class Run(object):
 	def __init__(self):
@@ -48,6 +49,15 @@ class Run(object):
 		self.economy.assign_initial_inputs()
 		""" assign each firm random quantities of initial inputs """
 	
+	def monetary_shock(self):
+		money = parameters.monetary_shock_percent * parameters.money_stock
+		firms = random.sample(self.economy.firms_list, parameters.number_firms_monetary_injection)
+		money_per_firm = money / parameters.number_firms_monetary_injection
+		if parameters.monetary_shock_type == 'positive':
+			for firm in firms:
+				firm.wealth += money_per_firm
+		
+	
 	def record_statistics(self):
 		""" record data as system runs forward in time """
 		wealth = []
@@ -73,6 +83,10 @@ class Run(object):
 		for time in xrange(self.number_time_steps):
 			if time % 100 == 0:
 				print time, "time step"
+			
+			if time == parameters.monetary_shock_time_step:
+				self.monetary_shock()
+					
 			self.time_step.firms_produce()
 			""" produce """
 			self.time_step.agents_compute_demand_goods()
