@@ -32,7 +32,6 @@ class Run(object):
 		self.prices_cv = []
 		""" the coefficient of variation of prices charged by firms """
 		self.output = []
-		self.weights_endogeneous = parameters.weights_endogeneous
 	
 	def create_economy(self):
 		self.economy = economy.Economy()
@@ -96,7 +95,7 @@ class Run(object):
 			""" retail firms transfer consumption good to household """
 			self.time_step.compute_welfare()
 			""" compute household welfare """
-			if self.weights_endogeneous == True:
+			if parameters.weights_endogeneous == True:
 				self.time_step.firms_compute_weights()
 			self.record_statistics()
 			""" record economy statistics """

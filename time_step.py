@@ -14,6 +14,7 @@
 from __future__ import division
 import random
 from collections import OrderedDict
+import parameters
 
 class TimeStep(object):
 	def __init__(self):
@@ -37,7 +38,7 @@ class TimeStep(object):
 
 	def firms_compute_weights(self):
 		""" firms compute the proportions in which to buy inputs from sellers """
-		number_of_firms = int(self.economy.number_of_firms * self.economy.percent_firms_change_weights)
+		number_of_firms = int(parameters.number_of_firms * parameters.percent_firms_change_weights)
 		firms_which_change_weights = random.sample(self.economy.firms_list, number_of_firms)
 		for firm in firms_which_change_weights:
 			firm.compute_weights()

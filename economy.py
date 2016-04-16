@@ -26,26 +26,15 @@ class Economy(object):
 		""" a collection of commonly used functions in economics """
 		self.firm = firm
 		""" class firm """
-		self.labor = parameters.labor
-		""" quantity of labor supplied by representative household """
-		self.number_of_firms = parameters.number_of_firms
-		""" number of firms in the economy """
-		self.percent_firms_change_weights = parameters.percent_firms_change_weights
-		""" percent of firms which changes weights every time step """
 		self.firms_list = []
 		""" a list of all firms in the economy """
 		self.firms_network = None
 		""" network of firms """
 		self.household = None
 		""" representative household """
-		self.CES_exponent = parameters.CES_exponent
-		self.cobb_douglas_exponents = parameters.cobb_douglas_exponents
-		""" parameters of production function used by firms """
-		self.barabasi_albert_graph_parameter = parameters.barabasi_albert_graph_parameter
-		""" parameter used to construct Scale-free bi-directional network using networkx """
-	
+
 	def create_firms(self):
-		self.firms_list = [self.firm.Firm() for count in xrange(self.number_of_firms)]
+		self.firms_list = [self.firm.Firm() for count in xrange(parameters.number_of_firms)]
 		""" instantiate a number of firms """
 		ID = 1
 		""" firm IDs begin from 1 because the household has ID 0 """
@@ -55,9 +44,9 @@ class Economy(object):
 			""" assign random initial wealth to each firm """
 			firm.price = random.uniform(0,1)
 			""" assign random initial price to each firm """
-			firm.CES_exponent = self.CES_exponent
+			firm.CES_exponent = parameters.CES_exponent
 			""" assign CES production exponent to each firm """
-			firm.cobb_douglas_exponents = self.cobb_douglas_exponents
+			firm.cobb_douglas_exponents = parameters.cobb_douglas_exponents
 			""" assign cobb-douglas exponents to each firm """
 			firm.ID = ID
 			""" assign firm ID """
@@ -72,11 +61,11 @@ class Economy(object):
 		""" assign random initial wealth to household """
 		self.household.wage.append(random.uniform(0,1))
 		""" assign random initial wage to household """
-		self.household.labor = self.labor
+		self.household.labor = parameters.labor
 		""" assign quantity of labor supplied to household """
 		self.household.labor_demand_sum = random.uniform(0,1)
 		""" assign random initial nominal demand for labor """
-		exponents = ef.normalized_random_numbers(self.number_of_firms)
+		exponents = ef.normalized_random_numbers(parameters.number_of_firms)
 		""" the function generates a list of normalized random numbers; length of list is the argument """
 		""" the list is the Cobb-Douglas exponents of the household utility function """
 		""" household buys goods only from retail firms, so it as has many exponents as there are retail firms """
@@ -87,7 +76,7 @@ class Economy(object):
 			count += 1
 					
 	def create_firms_network(self):
-		G = nx.barabasi_albert_graph(self.number_of_firms, self.barabasi_albert_graph_parameter)
+		G = nx.barabasi_albert_graph(parameters.number_of_firms, parameters.barabasi_albert_graph_parameter)
 		mapping = dict(enumerate(self.firms_list))
 		self.firms_network = nx.relabel_nodes(G, mapping)
 		""" replace the nodes in the graph with firms """
