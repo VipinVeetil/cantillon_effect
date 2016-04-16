@@ -32,6 +32,7 @@ class Run(object):
 		self.prices_cv = []
 		""" the coefficient of variation of prices charged by firms """
 		self.output = []
+		self.weights_endogeneous = parameters.weights_endogeneous
 	
 	def create_economy(self):
 		self.economy = economy.Economy()
@@ -71,7 +72,7 @@ class Run(object):
 		self.time_step.economy = self.economy
 		""" assign the economy to functions that occur every time step """
 		for time in xrange(self.number_time_steps):
-			if time % 10 == 0:
+			if time % 100 == 0:
 				print time, "time step"
 			self.time_step.firms_produce()
 			""" produce """
@@ -95,7 +96,7 @@ class Run(object):
 			""" retail firms transfer consumption good to household """
 			self.time_step.compute_welfare()
 			""" compute household welfare """
-			if parameters.weights_endogeneous == True:
+			if self.weights_endogeneous == True:
 				self.time_step.firms_compute_weights()
 			self.record_statistics()
 			""" record economy statistics """
