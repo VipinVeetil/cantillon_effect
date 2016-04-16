@@ -71,7 +71,7 @@ class Run(object):
 		self.time_step.economy = self.economy
 		""" assign the economy to functions that occur every time step """
 		for time in xrange(self.number_time_steps):
-			if time % 1 == 0:
+			if time % 10 == 0:
 				print time, "time step"
 			self.time_step.firms_produce()
 			""" produce """

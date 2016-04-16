@@ -52,6 +52,19 @@ plt.plot(start_instance.run.prices_mean)
 plt.title('Mean Price')
 plt.show()
 
+
+plt.plot(start_instance.run.output)
+plt.title('Output')
+plt.show()
+
+
+plt.plot(start_instance.run.output[30:])
+plt.title('Last Output')
+plt.show()
+
+
+"""
+
 plt.plot(start_instance.run.GDP)
 plt.title('Nominal GDP')
 plt.show()
@@ -73,13 +86,6 @@ plt.title('Last Real GDP')
 plt.show()
 
 
-plt.plot(start_instance.run.output)
-plt.title('Output')
-plt.show()
-
-plt.plot(start_instance.run.output[30:])
-plt.title('Last Output')
-plt.show()
 
 
 
@@ -88,7 +94,9 @@ plt.show()
 
 
 
-"""
+
+
+
 plt.plot(start_instance.run.wealth_cv)
 plt.title('Firms Wealth CV')
 plt.show()
