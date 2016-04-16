@@ -57,7 +57,7 @@ class Run(object):
 			wealth.append(firm.wealth)
 			prices.append(firm.price)
 			outputs.append(firm.output)
-		
+		#print "prices", prices
 		#wealth.append(self.economy.household.wealth[-1])
 		#	print self.economy.household.wealth
 		
@@ -95,7 +95,8 @@ class Run(object):
 			""" retail firms transfer consumption good to household """
 			self.time_step.compute_welfare()
 			""" compute household welfare """
-			self.time_step.firms_compute_weights()
+			if parameters.weights_endogeneous == True:
+				self.time_step.firms_compute_weights()
 			self.record_statistics()
 			""" record economy statistics """
 
