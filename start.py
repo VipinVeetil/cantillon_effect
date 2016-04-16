@@ -20,9 +20,10 @@ import parameters
 from time import time
 import numpy as np
 
+
+
 t = time()
 class Start(object):
-
 	def __init__(self):
 		self.run = run.Run()
 
@@ -46,6 +47,7 @@ print (time() - t)/60, "minutes", parameters.number_of_firms, "firms", parameter
 print (time() - t)/3600, "hours", parameters.number_of_firms, "firms", parameters.time_steps, "time steps"
 
 
+"""
 
 plt.plot(start_instance.run.prices_mean)
 plt.title('Mean Price')
@@ -170,7 +172,7 @@ plt.title('Firms Wealth CV')
 plt.show()
 
 
-
+"""
 
 
 

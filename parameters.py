@@ -16,8 +16,8 @@
 from __future__ import division
 
 
-number_of_firms = 1000
-time_steps = 1000
+number_of_firms = 100
+time_steps = 600
 CES_exponent = 0.8
 cobb_douglas_exponents = [0.3, 0.7]
 labor = 1000
@@ -27,7 +27,7 @@ weights_endogeneous = True
 
 
 money_stock = number_of_firms + 1
-monetary_shock_time_step = int(time_steps/2)
+monetary_shock_time_step = 500
 monetary_shock_type = 'positive'
 monetary_shock_percent = 0.1
 proportion_firms_monetary_injection = 0.01

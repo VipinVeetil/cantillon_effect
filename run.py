@@ -78,8 +78,8 @@ class Run(object):
 		self.time_step.economy = self.economy
 		""" assign the economy to functions that occur every time step """
 		for time in xrange(self.number_time_steps):
-			if time % 100 == 0:
-				print time, "time step"
+			#if time % 100 == 0:
+			#print time, "time step"
 			
 			if time == parameters.monetary_shock_time_step:
 				self.monetary_shock()
