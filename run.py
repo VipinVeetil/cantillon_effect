@@ -67,9 +67,6 @@ class Run(object):
 			wealth.append(firm.wealth)
 			prices.append(firm.price)
 			outputs.append(firm.output)
-		#print "prices", prices
-		#wealth.append(self.economy.household.wealth[-1])
-		#	print self.economy.household.wealth
 		
 		self.GDP.append(sum(wealth))
 		self.wealth_cv.append(stats.variation(wealth))

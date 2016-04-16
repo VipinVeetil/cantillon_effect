@@ -45,6 +45,7 @@ print (time() - t), "seconds", parameters.number_of_firms, "firms", parameters.t
 print (time() - t)/60, "minutes", parameters.number_of_firms, "firms", parameters.time_steps, "time steps"
 print (time() - t)/3600, "hours", parameters.number_of_firms, "firms", parameters.time_steps, "time steps"
 
+"""
 
 
 
@@ -155,7 +156,6 @@ plt.hist(hist, 100, normed=1)
 plt.title('200 Price Changes')
 plt.show()
 
-"""
 
 plt.plot(start_instance.run.economy.household.wealth)
 plt.title('Household Wealth')
