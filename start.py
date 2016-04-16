@@ -48,14 +48,14 @@ print (time() - t)/3600, "hours", parameters.number_of_firms, "firms", parameter
 
 
 
+plt.plot(start_instance.run.prices_mean)
+plt.title('Mean Price')
+plt.show()
 
 plt.plot(start_instance.run.GDP)
 plt.title('Nominal GDP')
 plt.show()
 
-plt.plot(start_instance.run.prices_mean)
-plt.title('Mean Price')
-plt.show()
 
 real_GDP = []
 for i in xrange(len(start_instance.run.GDP)):
@@ -71,6 +71,16 @@ plt.show()
 plt.plot(real_GDP[30: ])
 plt.title('Last Real GDP')
 plt.show()
+
+
+plt.plot(start_instance.run.output)
+plt.title('Output')
+plt.show()
+
+plt.plot(start_instance.run.output[30:])
+plt.title('Last Output')
+plt.show()
+
 
 
 

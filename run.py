@@ -31,6 +31,7 @@ class Run(object):
 		self.prices_mean = []
 		self.prices_cv = []
 		""" the coefficient of variation of prices charged by firms """
+		self.output = []
 	
 	def create_economy(self):
 		self.economy = economy.Economy()
@@ -51,9 +52,11 @@ class Run(object):
 		""" record data as system runs forward in time """
 		wealth = []
 		prices = []
+		outputs = []
 		for firm in self.economy.firms_list:
 			wealth.append(firm.wealth)
 			prices.append(firm.price)
+			outputs.append(firm.output)
 		
 		#wealth.append(self.economy.household.wealth[-1])
 		#	print self.economy.household.wealth
@@ -62,6 +65,7 @@ class Run(object):
 		self.wealth_cv.append(stats.variation(wealth))
 		self.prices_mean.append(np.mean(prices))
 		self.prices_cv.append(stats.variation(prices))
+		self.output.append(sum(outputs))
 
 	def time_steps(self):
 		self.time_step.economy = self.economy
