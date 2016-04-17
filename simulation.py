@@ -22,10 +22,14 @@ class Simulation(object):
 	def __init__(self):
 		self.run = None
 		self.monetary_shock_percent = 0.1
+		self.increment_monetary_shock_percent = 0.01
+		self.number_of_firms = 1000
 		self.number_of_cv_time_series = 4
+		self.number_of_CV_change_measures = 100
 	
 	def assign_parameter_values(self):
 		parameters.monetary_shock_percent = self.monetary_shock_percent
+		parameters.number_of_firms = self.number_of_firms
 
 	def create_economy(self):
 		self.run = run.Run()
@@ -34,20 +38,29 @@ class Simulation(object):
 	def forward_in_time(self):
 		self.run.time_steps()
 
-	def simulations(self):
-		increment_monetary_shock_percent = 0.01
+	def simulations_CV(self):
+		increment_monetary_shock_percent = self.increment_monetary_shock_percent
 		monetary_shock_percent_list = np.arange(0.00, 1.01, increment_monetary_shock_percent)
-		with open('monetary_shocks.csv', 'wb') as monetary_shocks:
-			for percent_shock in monetary_shock_percent_list:
-				print 'percent_shock', percent_shock
-				self.monetary_shock_percent = percent_shock
-				self.assign_parameter_values()
-				self.create_economy()
-				self.forward_in_time()
-				mean_CV = np.mean(self.run.prices_cv[500:600])
-				max_CV = max(self.run.prices_cv[500:600])
-				writer = csv.writer(monetary_shocks, delimiter=',')
-				writer.writerow([percent_shock] + [mean_CV] + [max_CV])
+		with open('mean_CV_changes.csv', 'wb') as mean_CV_changes:
+			with open('max_CV_changes.csv', 'wb') as max_CV_changes:
+				for percent_shock in monetary_shock_percent_list:
+					self.monetary_shock_percent = percent_shock
+					self.assign_parameter_values()
+					mean_CV_change_list = []
+					max_CV_change_list = []
+					for number in range(self.number_of_CV_change_measures):
+						print 'percent_shock', percent_shock, 'run', number
+						self.create_economy()
+						self.forward_in_time()
+						pre_shock_CV = np.mean(self.run.prices_cv[400:499])
+						mean_change_CV = (np.mean(self.run.prices_cv[500:600]) - pre_shock_CV)/pre_shock_CV
+						mean_CV_change_list.append(mean_change_CV)
+						max_change_CV = (max(self.run.prices_cv[500:600]) - pre_shock_CV)/pre_shock_CV
+						max_CV_change_list.append(max_change_CV)
+					writer_mean_CV = csv.writer(mean_CV_changes, delimiter=',')
+					writer_mean_CV.writerow([percent_shock] + mean_CV_change_list)
+					writer_max_CV = csv.writer(max_CV_changes, delimiter=',')
+					writer_max_CV.writerow([percent_shock] + max_CV_change_list)
 
 
 	def simulations_price_changes(self):
@@ -78,14 +91,7 @@ class Simulation(object):
 
 
 
-
-
-
-
-
-
-
 simulation_instance = Simulation()
-#simulation_instance.simulations()
+simulation_instance.simulations_CV()
 #simulation_instance.simulations_price_changes()
-simulation_instance.simulations_cv_time_series()
+#simulation_instance.simulations_cv_time_series()

@@ -17,6 +17,44 @@ import random as random
 import numpy as np
 
 
+def cv_change():
+	mean_series =  pd.read_csv('mean_CV_changes.csv')
+	max_series =  pd.read_csv('max_CV_changes.csv')
+	shocks = np.arange(0,1.01,0.2)
+	avg_mean_series = []
+	avg_max_series = []
+	
+	for i in xrange(6):
+		series = mean_series.iloc[i][1:]
+		avg = np.mean(series)
+		avg_mean_series.append(avg)
+	
+	for i in xrange(6):
+		series = max_series.iloc[i][1:]
+		avg = np.mean(series)
+		avg_max_series.append(avg)
+
+	plt.scatter(shocks, avg_mean_series)
+	plt.title('Change in CV of prices', fontsize = 16)
+	plt.xlabel('Proportion money injection', fontsize = 14)
+	plt.ylabel('Normalized change in coefficient of variation',fontsize = 14)
+	plt.grid()
+	plt.show()
+	
+	"""
+	plt.scatter(shocks, avg_max_series)
+	plt.title('Change in maximum CV of prices', fontsize = 16)
+	plt.xlabel('Proportion money injection', fontsize = 14)
+	plt.ylabel('Normalized change in maximum coefficient of variation',fontsize = 14)
+	plt.grid()
+	plt.show()
+	"""
+
+
+cv_change()
+
+
+
 
 def cv_time_series():
 	cv =  pd.read_csv('cv_time_series.csv')
@@ -68,7 +106,7 @@ def cv_time_series():
 
 
 
-cv_time_series()
+#cv_time_series()
 
 
 
