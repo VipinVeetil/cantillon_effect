@@ -22,6 +22,7 @@ class Simulation(object):
 	def __init__(self):
 		self.run = None
 		self.monetary_shock_percent = 0.1
+		self.number_of_cv_time_series = 4
 	
 	def assign_parameter_values(self):
 		parameters.monetary_shock_percent = self.monetary_shock_percent
@@ -64,8 +65,27 @@ class Simulation(object):
 				writer = csv.writer(price_changes, delimiter=',')
 				writer.writerow([time] + histogram_data)
 
+	def simulations_cv_time_series(self):
+		with open('cv_time_series.csv', 'wb') as cv_time_series:
+			for number in xrange(self.number_of_cv_time_series):
+				print number
+				self.assign_parameter_values()
+				self.create_economy()
+				self.forward_in_time()
+				series = self.run.prices_cv
+				writer = csv.writer(cv_time_series, delimiter=',')
+				writer.writerow(series)
+
+
+
+
+
+
+
+
+
 
 simulation_instance = Simulation()
-simulation_instance.simulations()
-simulation_instance.simulations_price_changes()
-
+#simulation_instance.simulations()
+#simulation_instance.simulations_price_changes()
+simulation_instance.simulations_cv_time_series()
